@@ -1,0 +1,2 @@
+rootProject.name='androidx-security-issue'
+include ':app'
