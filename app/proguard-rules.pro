@@ -24,12 +24,14 @@
 # depends on Protobuf Javalite. Recently Protobuf Javalite
 # introduced a change that relies on reflection, which doesn't
 # work with Proguard.
-# This rule keeps the (shaded) Protobuf classes in Tink as-is.
+# This rule keeps the reflection usages in (shaded) Protobuf
+# classes in Tink as-is.
 # See also:
+# - https://buganizer.corp.google.com/issues/154315507
 # - https://github.com/google/tink/issues/361
 # - https://github.com/protocolbuffers/protobuf/issues/6463
 # - https://b.corp.google.com/issues/144631039
--keep class * extends com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite {
-  *;
+-keepclassmembers class * extends com.google.crypto.tink.shaded.protobuf.GeneratedMessageLite {
+  <fields>;
 }
 
